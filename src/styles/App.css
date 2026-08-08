@@ -1,0 +1,163 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* APP STYLES */
+
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.layout-row {
+  display: flex;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.layout-column {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  /* réserve la place de la sidebar */
+  margin-left: 250px;
+
+  min-width: 0;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+  min-width: 0;
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  width: 250px;
+  height: 100vh;
+
+  padding: 20px 16px;
+
+  background: #ffffff;
+  border-right: 1px solid #eeeeee;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: Arial, sans-serif;
+
+  /* overflow-y: auto; */
+}
+
+/* LOGO */
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 0 12px;
+  margin-bottom: 22px;
+
+  color: #111827;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-logo svg {
+  width: 26px;
+  height: 26px;
+
+  color: #4f46e5;
+}
+
+/* SECTIONS */
+
+.sidebar-section {
+  margin-bottom: 10px;
+}
+
+.sidebar-title {
+  margin: 0 12px 8px;
+
+  color: #9ca3af;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+/* LINKS */
+
+.sidebar-link {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 11px;
+
+  border-radius: 7px;
+
+  color: #64748b;
+
+  text-decoration: none;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  transition: all 0.2s ease;
+}
+
+.sidebar-link svg {
+  width: 15px;
+  height: 15px;
+
+  flex-shrink: 0;
+
+  stroke-width: 1.7;
+}
+
+.sidebar-link:hover {
+  background: #f5f3ff;
+  color: #4f46e5;
+}
+
+/* LIEN ACTIF */
+
+.sidebar-link.active {
+  background: #f0edff;
+  color: #4f46e5;
+}
+
+/* SUPPORT */
+
+.sidebar-support {
+  margin-top: auto;
+  padding-top: 0px;
+}
+
+.sidebar-support .sidebar-link {
+  color: #64748b;
+}
+
+.external-icon {
+  width: 11px !important;
+  height: 11px !important;
+
+  margin-left: auto;
+}
