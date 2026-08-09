@@ -1,7 +1,229 @@
-function ProductsPage() {
-  return (
-    <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere nobis laborum, non beatae repellendus, labore, minus nemo quia quam necessitatibus rem quis dolorem. Quia molestias ex tenetur, dolorum, soluta ab et non nihil, ducimus qui corporis inventore reprehenderit. Soluta molestiae odio aspernatur alias molestias impedit accusantium odit repellat, eum temporibus! Aut veniam recusandae quis quia facere iusto excepturi dignissimos dicta eius voluptas voluptates, autem exercitationem. Nobis, nostrum hic sapiente, ipsam qui veritatis, pariatur necessitatibus quasi vel quam id. Veritatis praesentium tempore, dicta ipsa non odio suscipit nisi ut corporis blanditiis sint iste eius architecto corrupti similique natus at cupiditate voluptatum fugit laudantium alias aspernatur quos excepturi! Obcaecati, commodi eos. Ab numquam minus nulla in alias officia accusantium, laudantium rerum porro totam consectetur at harum illum sint ratione adipisci quasi labore accusamus enim voluptas animi dolorem? Ad sapiente officiis, veritatis architecto natus totam corrupti quasi, fuga eius autem unde harum animi beatae iste perspiciatis maxime minus dolorem nihil voluptatem in! Laborum sed non amet expedita eum doloremque dolore qui totam animi mollitia porro, quasi, pariatur nobis vel sint beatae fugiat odio excepturi nihil ea eos numquam adipisci minus. Numquam voluptates, harum consequatur fuga porro, ipsum nisi impedit culpa ipsa repellendus ab laudantium quas maiores soluta! Officiis voluptatibus quisquam nemo nisi ipsa sapiente consectetur odio tempore ad ducimus cupiditate, nostrum deleniti corrupti laboriosam? Amet facere molestias deserunt velit quaerat hic, esse autem voluptas tempore quo molestiae iusto? Maxime, error ducimus repellendus excepturi minima impedit cupiditate in quam id minus! Animi mollitia eius ut obcaecati beatae voluptatum minus sunt ducimus? Id, temporibus quidem libero numquam aliquid alias voluptatum aut facilis necessitatibus officiis cumque non sit. Molestias voluptatem, blanditiis quasi fugit dolor labore rerum nesciunt distinctio, quod possimus, non tenetur cupiditate ipsum sint laudantium? Molestiae iusto dignissimos eligendi eveniet neque sunt quas illum temporibus ducimus eius recusandae dolores cum natus eos id, odio, nisi deleniti qui, totam nesciunt. Dolorum maiores, libero vitae soluta tempore, vero iste hic ut explicabo suscipit odit ipsum nobis, reprehenderit saepe iure dolor? Dolor molestiae ad explicabo ex nesciunt voluptate velit animi fugiat laudantium totam accusantium, omnis ipsam vitae architecto voluptatibus fuga tempore quasi iste unde? Mollitia enim quo repellat cumque quibusdam veniam repudiandae eius excepturi quae fugit laboriosam natus, nisi aliquam illum earum, suscipit veritatis quis! Unde reprehenderit magni, iusto omnis consectetur voluptatibus incidunt id inventore amet recusandae neque accusantium sunt ullam illum perspiciatis illo autem fuga doloremque dolore?</div>
-  )
-}
+import { useEffect, useMemo, useState } from "react";
 
-export default ProductsPage
+import ProductHeader from "../features/products/components/ProductHeader";
+import ProductStats from "../features/products/components/ProductStats";
+import ProductToolbar from "../features/products/components/ProductToolbar";
+import ProductTable from "../features/products/components/ProductTable";
+import ProductPagination from "../features/products/components/ProductPagination";
+
+import products from "../features/products/data/products";
+
+import "../styles/Products.css";
+
+export default function ProductsPage() {
+  const [viewMode, setViewMode] = useState("list");
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const [sortOption, setSortOption] = useState("recent");
+
+  // Nombre de produits par page
+  const [itemsPerPage, setItemsPerPage] = useState(6);
+
+  // Page actuelle
+  const [currentPage, setCurrentPage] = useState(1);
+
+
+  // =====================================================
+  // FILTRAGE + RECHERCHE
+  // =====================================================
+
+  const filteredProducts = useMemo(() => {
+    const search = searchTerm.trim().toLowerCase();
+
+    let result = products.filter((product) => {
+
+      const matchesStatus =
+        activeFilter === "all" ||
+        product.status === activeFilter;
+
+      const matchesSearch =
+        !search ||
+        product.name.toLowerCase().includes(search) ||
+        product.category.toLowerCase().includes(search) ||
+        product.sku.toLowerCase().includes(search);
+
+      return matchesStatus && matchesSearch;
+    });
+
+
+    // =====================================================
+    // TRI
+    // =====================================================
+
+    result = [...result].sort((a, b) => {
+
+      switch (sortOption) {
+
+        case "recent":
+          return b.id - a.id;
+
+        case "price_asc":
+          return a.price - b.price;
+
+        case "price_desc":
+          return b.price - a.price;
+
+        case "stock_asc":
+          return a.stock - b.stock;
+
+        case "stock_desc":
+          return b.stock - a.stock;
+
+        default:
+          return 0;
+      }
+    });
+
+
+    return result;
+
+  }, [
+    searchTerm,
+    activeFilter,
+    sortOption,
+  ]);
+
+
+  // =====================================================
+  // PAGINATION
+  // =====================================================
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(
+      filteredProducts.length / itemsPerPage
+    )
+  );
+
+
+  // Produits affichés sur la page actuelle
+  const paginatedProducts = useMemo(() => {
+
+    const startIndex =
+      (currentPage - 1) * itemsPerPage;
+
+    const endIndex =
+      startIndex + itemsPerPage;
+
+    return filteredProducts.slice(
+      startIndex,
+      endIndex
+    );
+
+  }, [
+    filteredProducts,
+    currentPage,
+    itemsPerPage,
+  ]);
+
+
+  // =====================================================
+  // REVENIR À LA PAGE 1
+  // =====================================================
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [
+    searchTerm,
+    activeFilter,
+    sortOption,
+    itemsPerPage,
+  ]);
+
+
+  // =====================================================
+  // SÉCURITÉ SI UNE PAGE N'EXISTE PLUS
+  // =====================================================
+
+  useEffect(() => {
+
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+
+  }, [
+    currentPage,
+    totalPages,
+  ]);
+
+
+  return (
+    <main className="products-page">
+
+      <ProductHeader />
+
+      <ProductStats />
+
+
+      <section
+        className="products-catalog"
+        aria-labelledby="products-title"
+      >
+
+        {/* HEADER */}
+
+        <div className="products-catalog-header">
+
+          <div>
+
+            <h2 id="products-title">
+
+              Tous les produits
+
+              <span>
+                {filteredProducts.length} produits
+              </span>
+
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        {/* TOOLBAR */}
+
+        <ProductToolbar
+          viewMode={viewMode}
+          setViewMode={setViewMode}
+
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+
+          sortOption={sortOption}
+          setSortOption={setSortOption}
+        />
+
+
+        {/* PRODUITS */}
+
+        <ProductTable
+          viewMode={viewMode}
+          products={paginatedProducts}
+        />
+
+
+        {/* PAGINATION */}
+
+        <ProductPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+
+          itemsPerPage={itemsPerPage}
+          setItemsPerPage={setItemsPerPage}
+
+          totalItems={filteredProducts.length}
+        />
+
+      </section>
+
+    </main>
+  );
+}

@@ -1,10 +1,12 @@
+
+import { NavLink } from "react-router-dom";
 import "../../styles/App.css";
 
 function Sidebar() {
   return (
     <aside className="sidebar">
-
       <div className="sidebar-logo">
+        <NavLink to="/">
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -14,15 +16,20 @@ function Sidebar() {
           <path d="M5 8h14l-1 13H6L5 8Z" />
           <path d="M9 8V6a3 3 0 0 1 6 0v2" />
         </svg>
+        </NavLink>
 
         <span>Shop</span>
       </div>
 
-
       <div className="sidebar-section">
         <p className="sidebar-title">ACCUEIL</p>
 
-        <a href="/" className="sidebar-link">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M3 10.5L12 3l9 7.5" />
             <path d="M5 9.5V21h14V9.5" />
@@ -30,22 +37,32 @@ function Sidebar() {
           </svg>
 
           <span>Tableau de bord</span>
-        </a>
+        </NavLink>
       </div>
 
       <div className="sidebar-section">
         <p className="sidebar-title">E-COMMERCE</p>
 
-        <a href="/products" className="sidebar-link active">
+        <NavLink
+          to="/products"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M20 13l-7 7-9-9V4h7l9 9Z" />
             <circle cx="7.5" cy="7.5" r="1" />
           </svg>
 
           <span>Produits</span>
-        </a>
+        </NavLink>
 
-        <a href="/orders" className="sidebar-link">
+        <NavLink
+          to="/orders"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M3 4h2l2.2 11h10.5L20 7H6" />
             <circle cx="9" cy="19" r="1.5" />
@@ -53,9 +70,14 @@ function Sidebar() {
           </svg>
 
           <span>Commandes</span>
-        </a>
+        </NavLink>
 
-        <a href="/customers" className="sidebar-link">
+        <NavLink
+          to="/customers"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <circle cx="9" cy="7" r="3" />
             <path d="M3 20a6 6 0 0 1 12 0" />
@@ -64,9 +86,14 @@ function Sidebar() {
           </svg>
 
           <span>Clients</span>
-        </a>
+        </NavLink>
 
-        <a href="/categories" className="sidebar-link">
+        <NavLink
+          to="/categories"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <rect x="3" y="3" width="7" height="7" rx="1" />
             <rect x="14" y="3" width="7" height="7" rx="1" />
@@ -75,9 +102,14 @@ function Sidebar() {
           </svg>
 
           <span>Catégories</span>
-        </a>
+        </NavLink>
 
-        <a href="/promotions" className="sidebar-link">
+        <NavLink
+          to="/promotions"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M20 13l-7 7-9-9V4h7l9 9Z" />
             <circle cx="7.5" cy="7.5" r="1" />
@@ -86,13 +118,18 @@ function Sidebar() {
           </svg>
 
           <span>Promotions</span>
-        </a>
+        </NavLink>
       </div>
 
       <div className="sidebar-section">
         <p className="sidebar-title">GESTION</p>
 
-        <a href="/stocks" className="sidebar-link">
+        <NavLink
+          to="/stocks"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="m4 7 8-4 8 4-8 4-8-4Z" />
             <path d="M4 7v10l8 4 8-4V7" />
@@ -100,9 +137,14 @@ function Sidebar() {
           </svg>
 
           <span>Stocks</span>
-        </a>
+        </NavLink>
 
-        <a href="/suppliers" className="sidebar-link">
+        <NavLink
+          to="/suppliers"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M4 21V5h11v16" />
             <path d="M15 9h4l2 3v9h-6" />
@@ -111,9 +153,14 @@ function Sidebar() {
           </svg>
 
           <span>Fournisseurs</span>
-        </a>
+        </NavLink>
 
-        <a href="/deliveries" className="sidebar-link">
+        <NavLink
+          to="/deliveries"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M3 6h11v11H3z" />
             <path d="M14 10h4l3 3v4h-7z" />
@@ -122,30 +169,45 @@ function Sidebar() {
           </svg>
 
           <span>Livraisons</span>
-        </a>
+        </NavLink>
 
-        <a href="/reviews" className="sidebar-link">
+        <NavLink
+          to="/reviews"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z" />
           </svg>
 
           <span>Avis clients</span>
-        </a>
+        </NavLink>
       </div>
 
       <div className="sidebar-section">
         <p className="sidebar-title">AUTRES</p>
 
-        <a href="/settings" className="sidebar-link">
+        <NavLink
+          to="/settings"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <circle cx="12" cy="12" r="3" />
             <path d="M19.4 15a1.8 1.8 0 0 0 .3 2l.1.1-2.2 2.2-.1-.1a1.8 1.8 0 0 0-2-.3 1.8 1.8 0 0 0-1.1 1.7v.1h-3v-.1a1.8 1.8 0 0 0-1.1-1.7 1.8 1.8 0 0 0-2 .3l-.1.1-2.2-2.2.1-.1a1.8 1.8 0 0 0 .3-2 1.8 1.8 0 0 0-1.7-1.1h-.1v-3h.1a1.8 1.8 0 0 0 1.7-1.1 1.8 1.8 0 0 0-.3-2l-.1-.1 2.2-2.2.1.1a1.8 1.8 0 0 0 2 .3 1.8 1.8 0 0 0 1.1-1.7V4h3v.1a1.8 1.8 0 0 0 1.1 1.7 1.8 1.8 0 0 0 2-.3l.1-.1 2.2 2.2-.1.1a1.8 1.8 0 0 0-.3 2 1.8 1.8 0 0 0 1.7 1.1h.1v3h-.1a1.8 1.8 0 0 0-1.7 1.2Z" />
           </svg>
 
           <span>Paramètres</span>
-        </a>
+        </NavLink>
 
-        <a href="/reports" className="sidebar-link">
+        <NavLink
+          to="/reports"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M4 19V5" />
             <path d="M4 19h17" />
@@ -154,12 +216,17 @@ function Sidebar() {
           </svg>
 
           <span>Rapports & analyses</span>
-        </a>
+        </NavLink>
       </div>
 
       {/* SUPPORT */}
       <div className="sidebar-support">
-        <a href="/support" className="sidebar-link">
+        <NavLink
+          to="/support"
+          className={({ isActive }) =>
+            `sidebar-link ${isActive ? "active" : ""}`
+          }
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <circle cx="12" cy="12" r="9" />
             <path d="M9.5 9a2.5 2.5 0 1 1 4.3 1.8c-1 .8-1.8 1.3-1.8 2.7" />
@@ -178,9 +245,8 @@ function Sidebar() {
             <path d="M19 5l-8 8" />
             <path d="M19 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4" />
           </svg>
-        </a>
+        </NavLink>
       </div>
-
     </aside>
   );
 }

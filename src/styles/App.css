@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Inter', sans-serif;
 }
 
 
@@ -160,4 +163,816 @@
   height: 11px !important;
 
   margin-left: auto;
+}
+
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+}
+
+.breadcrumb-home {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.breadcrumb-current {
+  font-weight: 500;
+}
+
+/* Header */
+.header {
+  height: 64px;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+
+  padding: 0 24px;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   LEFT
+========================= */
+
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  min-width: 0;
+}
+
+
+/* =========================
+   CENTER
+========================= */
+
+.header-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.global-search {
+  width: 420px;
+  max-width: 100%;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 12px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  background: #f9fafb;
+
+  box-sizing: border-box;
+}
+
+.global-search input {
+  flex: 1;
+  min-width: 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  font-size: 14px;
+}
+
+.global-search kbd {
+  flex-shrink: 0;
+
+  padding: 2px 6px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+
+  font-size: 11px;
+}
+
+
+/* =========================
+   RIGHT
+========================= */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  min-width: 0;
+}
+
+
+/* =========================
+   NOTIFICATION
+========================= */
+
+.notification-button {
+  position: relative;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.notification-badge {
+  position: absolute;
+
+  top: 2px;
+  right: 2px;
+
+  min-width: 17px;
+  height: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 4px;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  line-height: 1;
+}
+
+
+/* =========================
+   USER MENU
+========================= */
+
+.user-menu {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 4px 8px;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #351fd1;
+  color: #ffff;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  overflow: hidden;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   RESPONSIVE GLOBAL
+   APP / SIDEBAR / HEADER
+   ========================================================= */
+
+
+/* =========================================================
+   ÉCRANS LARGES
+   1400px+
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+  .sidebar {
+    width: 260px;
+  }
+
+  .layout-column {
+    margin-left: 260px;
+  }
+
+  .content {
+    padding: 24px;
+  }
+
+}
+
+
+/* =========================================================
+   LAPTOP
+   1200px
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  .sidebar {
+    width: 220px;
+  }
+
+  .layout-column {
+    margin-left: 220px;
+  }
+
+  .content {
+    padding: 18px;
+  }
+
+  .header {
+    gap: 12px;
+  }
+
+  .global-search {
+    max-width: 100%;
+  }
+
+  .user-name {
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLETTE
+   992px
+   ========================================================= */
+
+@media (max-width: 992px) {
+
+  /* APP */
+
+  .layout-column {
+    margin-left: 0;
+  }
+
+  .content {
+    width: 100%;
+    padding: 16px;
+  }
+
+
+  /* SIDEBAR */
+
+  .sidebar {
+    width: 72px;
+
+    padding: 20px 10px;
+
+    align-items: center;
+  }
+
+
+  /* LOGO */
+
+  .sidebar-logo {
+    justify-content: center;
+
+    padding: 0;
+
+    margin-bottom: 26px;
+  }
+
+  .sidebar-logo span {
+    display: none;
+  }
+
+  .sidebar-logo svg {
+    width: 27px;
+    height: 27px;
+  }
+
+
+  /* TITRES */
+
+  .sidebar-title {
+    display: none;
+  }
+
+
+  /* LIENS */
+
+  .sidebar-link {
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 0;
+
+    gap: 0;
+  }
+
+  .sidebar-link span {
+    display: none;
+  }
+
+  .sidebar-link svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .sidebar-section {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 8px;
+  }
+
+
+  /* SUPPORT */
+
+  .sidebar-support {
+    width: 100%;
+  }
+
+  .external-icon {
+    display: none;
+  }
+
+
+  /* HEADER */
+
+  .header {
+    height: 60px;
+
+    grid-template-columns: 1fr auto;
+
+    gap: 12px;
+
+    padding: 0 16px;
+  }
+
+
+  /* SEARCH */
+
+  .global-search {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* HEADER RIGHT */
+
+  .header-right {
+    align-items: center;
+    gap: 4px;
+  }
+
+
+  /* USER */
+
+  .user-name {
+    display: none;
+  }
+
+  .user-menu {
+    gap: 0;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   768px
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* APP */
+
+  .app-container {
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .layout-row {
+    min-width: 0;
+  }
+
+  .content {
+    padding: 14px;
+  }
+
+
+  /* =====================================================
+     SIDEBAR MOBILE
+     ===================================================== */
+
+  .sidebar {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 64px;
+    height: 100vh;
+
+    padding: 16px 8px;
+
+    z-index: 1000;
+  }
+
+  .sidebar-logo {
+    margin-bottom: 22px;
+  }
+
+  .sidebar-link {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 8px;
+  }
+
+
+  /* =====================================================
+     HEADER
+     ===================================================== */
+
+  .header {
+    width: calc(100% - 64px);
+
+    margin-left: 64px;
+
+    grid-template-columns: 1fr auto;
+
+    padding: 0 12px;
+  }
+
+
+  /* =====================================================
+     CONTENT
+     ===================================================== */
+
+  .layout-column {
+    margin-left: 64px;
+
+    width: calc(100% - 64px);
+
+    min-width: 0;
+  }
+
+
+  /* SEARCH */
+
+  .global-search {
+    height: 38px;
+
+    padding: 0 10px;
+
+    gap: 7px;
+  }
+
+  .global-search input {
+    font-size: 13px;
+  }
+
+  .global-search kbd {
+    display: none;
+  }
+
+
+  /* NOTIFICATION */
+
+  .notification-button {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  /* AVATAR */
+
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+
+  /* BREADCRUMB */
+
+  .breadcrumb {
+    font-size: 12px;
+
+    gap: 6px;
+
+    overflow: hidden;
+  }
+
+  .breadcrumb-current {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+  }
+
+}
+
+
+/* =========================================================
+   PETIT MOBILE
+   576px
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+  .content {
+    padding: 12px;
+  }
+
+
+  /* SIDEBAR */
+
+  .sidebar {
+    width: 58px;
+
+    padding: 14px 7px;
+  }
+
+  .sidebar-link {
+    width: 40px;
+    height: 40px;
+  }
+
+
+  /* LAYOUT */
+
+  .layout-column {
+    margin-left: 58px;
+
+    width: calc(100% - 58px);
+  }
+
+
+  /* HEADER */
+
+  .header {
+    width: calc(100% - 58px);
+
+    margin-left: 58px;
+
+    height: 56px;
+
+    padding: 0 10px;
+
+    gap: 6px;
+  }
+
+
+  /* GLOBAL SEARCH */
+
+  .global-search {
+    height: 36px;
+
+    border-radius: 7px;
+
+    padding: 0 9px;
+
+    gap: 6px;
+  }
+
+  .global-search input {
+    font-size: 12px;
+  }
+
+
+  /* NOTIFICATION */
+
+  .notification-button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .notification-badge {
+    top: 0;
+    right: 0;
+
+    min-width: 14px;
+    height: 14px;
+
+    font-size: 9px;
+  }
+
+
+  /* AVATAR */
+
+  .user-avatar {
+    width: 30px;
+    height: 30px;
+
+    font-size: 11px;
+  }
+
+}
+
+
+/* =========================================================
+   TRÈS PETIT MOBILE
+   400px
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .content {
+    padding: 10px;
+  }
+
+
+  /* SIDEBAR */
+
+  .sidebar {
+    width: 54px;
+
+    padding: 12px 6px;
+  }
+
+  .sidebar-link {
+    width: 38px;
+    height: 38px;
+  }
+
+  .sidebar-link svg {
+    width: 17px;
+    height: 17px;
+  }
+
+
+  /* LAYOUT */
+
+  .layout-column {
+    margin-left: 54px;
+
+    width: calc(100% - 54px);
+  }
+
+
+  /* HEADER */
+
+  .header {
+    width: calc(100% - 54px);
+
+    margin-left: 54px;
+
+    padding: 0 8px;
+
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    gap: 4px;
+  }
+
+
+  /* SEARCH */
+
+  .global-search {
+    height: 34px;
+
+    padding: 0 8px;
+  }
+
+  .global-search input {
+    font-size: 11px;
+  }
+
+
+  /* NOTIFICATION */
+
+  .notification-button {
+    width: 32px;
+    height: 32px;
+  }
+
+
+  /* AVATAR */
+
+  .user-avatar {
+    width: 28px;
+    height: 28px;
+
+    font-size: 10px;
+  }
+
+}
+
+
+/* =========================================================
+   ÉCRANS TRÈS PETITS
+   340px
+   ========================================================= */
+
+@media (max-width: 340px) {
+
+  .content {
+    padding: 8px;
+  }
+
+
+  .sidebar {
+    width: 50px;
+
+    padding: 10px 5px;
+  }
+
+  .sidebar-link {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  .layout-column {
+    margin-left: 50px;
+
+    width: calc(100% - 50px);
+  }
+
+
+  .header {
+    width: calc(100% - 50px);
+
+    margin-left: 50px;
+
+    height: 52px;
+
+    padding: 0 6px;
+  }
+
+
+  .global-search {
+    height: 32px;
+  }
+
+  .global-search input {
+    font-size: 10px;
+  }
+
+  .notification-button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .user-avatar {
+    width: 26px;
+    height: 26px;
+  }
+
 }
