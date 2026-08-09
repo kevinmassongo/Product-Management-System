@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
 
 const breadcrumbMap = {
   "/": "Tableau de bord",
   "/products": "Gestion des produits",
+  "/products/new": "Produit > Ajouter un produit",
   "/categories": "Gestion des catégories",
   "/customers": "Gestion des clients",
   "/stocks": "Gestion des stocks",
@@ -33,11 +33,7 @@ function Breadcrumb() {
 
       {location.pathname !== "/" && (
         <>
-          <ChevronRight
-            size={14}
-            aria-hidden="true"
-          />
-
+          /
           <span
             className="breadcrumb-current"
             aria-current="page"

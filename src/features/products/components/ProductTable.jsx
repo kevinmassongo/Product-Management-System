@@ -1,3 +1,4 @@
+import EmptyState from "../../../components/ui/EmptyState";
 import {
   PackageOpen,
   Eye,
@@ -5,6 +6,7 @@ import {
   Share2,
   MoreVertical,
 } from "lucide-react";
+
 
 
 function getStatusLabel(status) {
@@ -436,41 +438,6 @@ function ProductList({ products }) {
 
 
 /* =========================================================
-   EMPTY STATE
-   ========================================================= */
-
-function EmptyProducts() {
-  return (
-    <div className="products-empty">
-
-      <div className="products-empty-icon">
-
-        <PackageOpen
-          size={24}
-          strokeWidth={1.7}
-        />
-
-      </div>
-
-
-      <div className="products-empty-content">
-
-        <strong>
-          Aucun produit trouvé
-        </strong>
-
-        <span>
-          Aucun produit ne correspond à ce filtre.
-        </span>
-
-      </div>
-
-    </div>
-  );
-}
-
-
-/* =========================================================
    MAIN COMPONENT
    ========================================================= */
 
@@ -482,9 +449,14 @@ export default function ProductTable({
   /* ÉTAT VIDE */
 
   if (products.length === 0) {
-    return <EmptyProducts />;
-  }
-
+  return (
+    <EmptyState
+      icon={PackageOpen}
+      title="Aucun produit trouvé"
+      description="Aucun produit ne correspond à ce filtre."
+    />
+  );
+}
 
   /* VUE GRID */
 
