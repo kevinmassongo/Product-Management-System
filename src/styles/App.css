@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-*{
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -8,18 +13,21 @@
 }
 
 
-/* APP STYLES */
-
+/* =========================================================
+   APP
+   ========================================================= */
 
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+
+  min-height: 100vh;
 }
 
 .layout-row {
   display: flex;
   flex-grow: 1;
+
   min-width: 0;
 }
 
@@ -28,7 +36,6 @@
   flex-direction: column;
   flex-grow: 1;
 
-  /* réserve la place de la sidebar */
   margin-left: 250px;
 
   min-width: 0;
@@ -36,15 +43,20 @@
 
 .content {
   flex-grow: 1;
+
   padding: 20px;
+
   min-width: 0;
 }
 
 
-/* SIDEBAR */
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
 
 .sidebar {
   position: fixed;
+
   left: 0;
   top: 0;
 
@@ -54,24 +66,28 @@
   padding: 20px 16px;
 
   background: #ffffff;
+
   border-right: 1px solid #eeeeee;
 
   display: flex;
   flex-direction: column;
 
-  font-family: Arial, sans-serif;
-
-  /* overflow-y: auto; */
+  z-index: 1000;
 }
 
-/* LOGO */
+
+/* =========================================================
+   SIDEBAR — LOGO
+   ========================================================= */
 
 .sidebar-logo {
   display: flex;
   align-items: center;
+
   gap: 8px;
 
   padding: 0 12px;
+
   margin-bottom: 22px;
 
   color: #111827;
@@ -87,7 +103,10 @@
   color: #4f46e5;
 }
 
-/* SECTIONS */
+
+/* =========================================================
+   SIDEBAR — SECTIONS
+   ========================================================= */
 
 .sidebar-section {
   margin-bottom: 10px;
@@ -100,16 +119,21 @@
 
   font-size: 9px;
   font-weight: 700;
+
   letter-spacing: 0.4px;
 }
 
-/* LINKS */
+
+/* =========================================================
+   SIDEBAR — LINKS
+   ========================================================= */
 
 .sidebar-link {
   width: 100%;
 
   display: flex;
   align-items: center;
+
   gap: 10px;
 
   padding: 8px 11px;
@@ -123,7 +147,9 @@
   font-size: 11px;
   font-weight: 500;
 
-  transition: all 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .sidebar-link svg {
@@ -137,21 +163,23 @@
 
 .sidebar-link:hover {
   background: #f5f3ff;
+
   color: #4f46e5;
 }
-
-/* LIEN ACTIF */
 
 .sidebar-link.active {
   background: #f0edff;
+
   color: #4f46e5;
 }
 
-/* SUPPORT */
+
+/* =========================================================
+   SIDEBAR — SUPPORT
+   ========================================================= */
 
 .sidebar-support {
   margin-top: auto;
-  padding-top: 0px;
 }
 
 .sidebar-support .sidebar-link {
@@ -166,129 +194,143 @@
 }
 
 
-/* Breadcrumb */
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
+
 .breadcrumb {
   display: flex;
   align-items: center;
+
   gap: 8px;
+
+  min-width: 0;
 
   font-size: 14px;
 }
 
 .breadcrumb-home {
+  color: #4f46e5;
+
   text-decoration: none;
+
   font-weight: 600;
+
+  white-space: nowrap;
 }
 
 .breadcrumb-current {
+  min-width: 0;
+
+  color: #64748b;
+
   font-weight: 500;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
 }
 
-/* Header */
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
 .header {
-  height: 64px;
   width: 100%;
+  min-height: 64px;
 
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-
+  display: flex;
   align-items: center;
+
+  gap: 20px;
 
   padding: 0 24px;
 
   background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
 
-  box-sizing: border-box;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-/* =========================
-   LEFT
-========================= */
+
+/* =========================================================
+   HEADER — LEFT
+   ========================================================= */
 
 .header-left {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  flex: 1 1 0;
 
   min-width: 0;
+
+  display: flex;
+  align-items: center;
 }
 
 
-/* =========================
-   CENTER
-========================= */
+/* =========================================================
+   HEADER — CENTER
+   ========================================================= */
 
 .header-center {
+  flex: 0 1 420px;
+
+  min-width: 220px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 100%;
 }
 
+
+/* =========================================================
+   GLOBAL SEARCH
+   ========================================================= */
+
 .global-search {
-  width: 420px;
-  max-width: 100%;
+  width: 100%;
   height: 40px;
+
+  min-width: 0;
 
   display: flex;
   align-items: center;
 
-  gap: 10px;
-
-  padding: 0 12px;
-
   border: 1px solid #e5e7eb;
+
   border-radius: 8px;
 
   background: #f9fafb;
-
-  box-sizing: border-box;
-}
-
-.global-search input {
-  flex: 1;
-  min-width: 0;
-
-  border: none;
-  outline: none;
-
-  background: transparent;
-
-  font-size: 14px;
-}
-
-.global-search kbd {
-  flex-shrink: 0;
-
-  padding: 2px 6px;
-
-  border: 1px solid #d1d5db;
-  border-radius: 4px;
-
-  font-size: 11px;
 }
 
 
-/* =========================
-   RIGHT
-========================= */
+/*
+   Si GlobalSearch utilise le composant Input,
+   le style interne est géré par Input.css/App.css.
+*/
+
+
+/* =========================================================
+   HEADER — RIGHT
+   ========================================================= */
 
 .header-right {
+  flex: 1 1 0;
+
+  min-width: 0;
+
   display: flex;
   align-items: center;
   justify-content: flex-end;
 
   gap: 8px;
-
-  min-width: 0;
 }
 
 
-/* =========================
+/* =========================================================
    NOTIFICATION
-========================= */
+   ========================================================= */
 
 .notification-button {
   position: relative;
@@ -300,9 +342,12 @@
   align-items: center;
   justify-content: center;
 
+  flex-shrink: 0;
+
   padding: 0;
 
   border: none;
+
   background: transparent;
 
   cursor: pointer;
@@ -326,6 +371,7 @@
   border-radius: 50%;
 
   background: #ef4444;
+
   color: #ffffff;
 
   font-size: 10px;
@@ -335,9 +381,9 @@
 }
 
 
-/* =========================
+/* =========================================================
    USER MENU
-========================= */
+   ========================================================= */
 
 .user-menu {
   display: flex;
@@ -345,9 +391,12 @@
 
   gap: 10px;
 
+  flex-shrink: 0;
+
   padding: 4px 8px;
 
   border: none;
+
   background: transparent;
 
   cursor: pointer;
@@ -366,7 +415,8 @@
   border-radius: 50%;
 
   background: #351fd1;
-  color: #ffff;
+
+  color: #ffffff;
 
   font-size: 12px;
   font-weight: 600;
@@ -382,47 +432,64 @@
 }
 
 .user-name {
+  color: #111827;
+
   font-size: 14px;
   font-weight: 500;
 
   white-space: nowrap;
 }
 
-/* EMPTYSTATE */
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
 
 .empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   text-align: center;
-  padding: 60px 24px;
+
   min-height: 280px;
+
+  padding: 60px 24px;
 }
 
 .empty-state-icon {
+  width: 64px;
+  height: 64px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+
   margin-bottom: 20px;
+
   border-radius: 50%;
+
   background: #f5f5f5;
 }
 
 .empty-state-title {
-  margin: 0 0 8px;
+  margin-bottom: 8px;
+
   font-size: 18px;
   font-weight: 600;
 }
 
 .empty-state-description {
   max-width: 420px;
+
   margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
+
   color: #737373;
+
+  font-size: 14px;
+
+  line-height: 1.6;
 }
 
 .empty-state-action {
@@ -430,35 +497,65 @@
 }
 
 
+/* =========================================================
+   INPUT
+   ========================================================= */
+
 .input-group {
   width: 100%;
 }
 
 .input-wrapper {
   position: relative;
+
+  width: 100%;
+
   display: flex;
   align-items: center;
 }
 
 .input {
   width: 100%;
+
   padding: 10px 40px;
+
   border: 1px solid #ddd;
+
   border-radius: 6px;
+
   outline: none;
+
+  background: #ffffff;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input:focus {
+  border-color: #4f46e5;
+
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
 }
 
 .input-start-icon {
   position: absolute;
+
   left: 12px;
+
   display: flex;
   align-items: center;
+
   pointer-events: none;
 }
 
 .input-end-content {
   position: absolute;
+
   right: 8px;
+
   display: flex;
   align-items: center;
 }
@@ -467,20 +564,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   border: none;
+
   background: transparent;
+
   cursor: pointer;
 }
 
+
 /* =========================================================
-   RESPONSIVE GLOBAL
-   APP / SIDEBAR / HEADER
+   RESPONSIVE
    ========================================================= */
 
 
 /* =========================================================
-   ÉCRANS LARGES
-   1400px+
+   LARGE SCREENS — 1400px+
    ========================================================= */
 
 @media (min-width: 1400px) {
@@ -501,8 +600,7 @@
 
 
 /* =========================================================
-   LAPTOP
-   1200px
+   LAPTOP — 1200px
    ========================================================= */
 
 @media (max-width: 1200px) {
@@ -523,8 +621,8 @@
     gap: 12px;
   }
 
-  .global-search {
-    max-width: 100%;
+  .header-center {
+    flex-basis: 360px;
   }
 
   .user-name {
@@ -535,25 +633,29 @@
 
 
 /* =========================================================
-   TABLETTE
-   992px
+   TABLET — 992px
    ========================================================= */
 
 @media (max-width: 992px) {
 
-  /* APP */
+  /* =========================
+     LAYOUT
+  ========================= */
 
   .layout-column {
-    margin-left: 0;
+    margin-left: 72px;
   }
 
   .content {
     width: 100%;
+
     padding: 16px;
   }
 
 
-  /* SIDEBAR */
+  /* =========================
+     SIDEBAR
+  ========================= */
 
   .sidebar {
     width: 72px;
@@ -562,9 +664,6 @@
 
     align-items: center;
   }
-
-
-  /* LOGO */
 
   .sidebar-logo {
     justify-content: center;
@@ -583,15 +682,19 @@
     height: 27px;
   }
 
-
-  /* TITRES */
-
   .sidebar-title {
     display: none;
   }
 
+  .sidebar-section {
+    width: 100%;
 
-  /* LIENS */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 8px;
+  }
 
   .sidebar-link {
     justify-content: center;
@@ -613,19 +716,6 @@
     height: 18px;
   }
 
-  .sidebar-section {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    margin-bottom: 8px;
-  }
-
-
-  /* SUPPORT */
-
   .sidebar-support {
     width: 100%;
   }
@@ -635,36 +725,23 @@
   }
 
 
-  /* HEADER */
+  /* =========================
+     HEADER
+  ========================= */
 
   .header {
-    height: 60px;
-
-    grid-template-columns: 1fr auto;
-
-    gap: 12px;
+    min-height: 60px;
 
     padding: 0 16px;
+
+    gap: 12px;
   }
 
+  .header-center {
+    flex: 0 1 360px;
 
-  /* SEARCH */
-
-  .global-search {
-    width: 100%;
-    min-width: 0;
+    min-width: 180px;
   }
-
-
-  /* HEADER RIGHT */
-
-  .header-right {
-    align-items: center;
-    gap: 4px;
-  }
-
-
-  /* USER */
 
   .user-name {
     display: none;
@@ -672,27 +749,25 @@
 
   .user-menu {
     gap: 0;
+
+    padding: 4px;
   }
 
 }
 
 
 /* =========================================================
-   MOBILE
-   768px
+   MOBILE — 768px
    ========================================================= */
 
 @media (max-width: 768px) {
 
-  /* APP */
+  /* =========================
+     APP
+  ========================= */
 
   .app-container {
     min-height: 100vh;
-    height: auto;
-  }
-
-  .layout-row {
-    min-width: 0;
   }
 
   .content {
@@ -700,26 +775,14 @@
   }
 
 
-  /* =====================================================
-     SIDEBAR MOBILE
-     ===================================================== */
+  /* =========================
+     SIDEBAR
+  ========================= */
 
   .sidebar {
-    position: fixed;
-
-    left: 0;
-    top: 0;
-
     width: 64px;
-    height: 100vh;
 
     padding: 16px 8px;
-
-    z-index: 1000;
-  }
-
-  .sidebar-logo {
-    margin-bottom: 22px;
   }
 
   .sidebar-link {
@@ -729,47 +792,41 @@
     border-radius: 8px;
   }
 
-
-  /* =====================================================
-     HEADER
-     ===================================================== */
-
-  .header {
-    width: calc(100% - 64px);
-
+  .layout-column {
     margin-left: 64px;
-
-    grid-template-columns: 1fr auto;
-
-    padding: 0 12px;
   }
 
 
-  /* =====================================================
-     CONTENT
-     ===================================================== */
+  /* =========================
+     HEADER
+  ========================= */
 
-  .layout-column {
-    margin-left: 64px;
+  .header {
+    min-height: 58px;
 
-    width: calc(100% - 64px);
+    padding: 0 12px;
+
+    gap: 8px;
+  }
+
+  .header-left {
+    flex: 0 1 auto;
+
+    max-width: 30%;
+  }
+
+  .header-center {
+    flex: 1 1 auto;
 
     min-width: 0;
   }
 
-
-  /* SEARCH */
+  .header-right {
+    flex: 0 0 auto;
+  }
 
   .global-search {
     height: 38px;
-
-    padding: 0 10px;
-
-    gap: 7px;
-  }
-
-  .global-search input {
-    font-size: 13px;
   }
 
   .global-search kbd {
@@ -777,7 +834,9 @@
   }
 
 
-  /* NOTIFICATION */
+  /* =========================
+     NOTIFICATION
+  ========================= */
 
   .notification-button {
     width: 36px;
@@ -785,7 +844,9 @@
   }
 
 
-  /* AVATAR */
+  /* =========================
+     AVATAR
+  ========================= */
 
   .user-avatar {
     width: 32px;
@@ -793,7 +854,9 @@
   }
 
 
-  /* BREADCRUMB */
+  /* =========================
+     BREADCRUMB
+  ========================= */
 
   .breadcrumb {
     font-size: 12px;
@@ -803,20 +866,11 @@
     overflow: hidden;
   }
 
-  .breadcrumb-current {
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-  }
-
 }
 
 
 /* =========================================================
-   PETIT MOBILE
-   576px
+   SMALL MOBILE — 576px
    ========================================================= */
 
 @media (max-width: 576px) {
@@ -826,7 +880,9 @@
   }
 
 
-  /* SIDEBAR */
+  /* =========================
+     SIDEBAR
+  ========================= */
 
   .sidebar {
     width: 58px;
@@ -839,49 +895,49 @@
     height: 40px;
   }
 
-
-  /* LAYOUT */
-
   .layout-column {
     margin-left: 58px;
-
-    width: calc(100% - 58px);
   }
 
 
-  /* HEADER */
+  /* =========================
+     HEADER
+  ========================= */
 
   .header {
-    width: calc(100% - 58px);
-
-    margin-left: 58px;
-
-    height: 56px;
+    min-height: 56px;
 
     padding: 0 10px;
 
     gap: 6px;
   }
 
+  .header-left {
+    display: none;
+  }
 
-  /* GLOBAL SEARCH */
+  .header-center {
+    flex: 1;
+
+    min-width: 0;
+  }
+
+  .header-right {
+    flex: 0 0 auto;
+
+    gap: 2px;
+  }
 
   .global-search {
     height: 36px;
 
     border-radius: 7px;
-
-    padding: 0 9px;
-
-    gap: 6px;
-  }
-
-  .global-search input {
-    font-size: 12px;
   }
 
 
-  /* NOTIFICATION */
+  /* =========================
+     NOTIFICATION
+  ========================= */
 
   .notification-button {
     width: 34px;
@@ -899,7 +955,9 @@
   }
 
 
-  /* AVATAR */
+  /* =========================
+     AVATAR
+  ========================= */
 
   .user-avatar {
     width: 30px;
@@ -912,8 +970,7 @@
 
 
 /* =========================================================
-   TRÈS PETIT MOBILE
-   400px
+   VERY SMALL MOBILE — 400px
    ========================================================= */
 
 @media (max-width: 400px) {
@@ -923,7 +980,9 @@
   }
 
 
-  /* SIDEBAR */
+  /* =========================
+     SIDEBAR
+  ========================= */
 
   .sidebar {
     width: 54px;
@@ -941,53 +1000,31 @@
     height: 17px;
   }
 
-
-  /* LAYOUT */
-
   .layout-column {
     margin-left: 54px;
-
-    width: calc(100% - 54px);
   }
 
 
-  /* HEADER */
+  /* =========================
+     HEADER
+  ========================= */
 
   .header {
-    width: calc(100% - 54px);
-
-    margin-left: 54px;
+    min-height: 54px;
 
     padding: 0 8px;
-
-    grid-template-columns: minmax(0, 1fr) auto;
 
     gap: 4px;
   }
 
-
-  /* SEARCH */
-
   .global-search {
     height: 34px;
-
-    padding: 0 8px;
   }
-
-  .global-search input {
-    font-size: 11px;
-  }
-
-
-  /* NOTIFICATION */
 
   .notification-button {
     width: 32px;
     height: 32px;
   }
-
-
-  /* AVATAR */
 
   .user-avatar {
     width: 28px;
@@ -1000,8 +1037,7 @@
 
 
 /* =========================================================
-   ÉCRANS TRÈS PETITS
-   340px
+   EXTRA SMALL — 340px
    ========================================================= */
 
 @media (max-width: 340px) {
@@ -1010,6 +1046,10 @@
     padding: 8px;
   }
 
+
+  /* =========================
+     SIDEBAR
+  ========================= */
 
   .sidebar {
     width: 50px;
@@ -1022,31 +1062,23 @@
     height: 36px;
   }
 
-
   .layout-column {
     margin-left: 50px;
-
-    width: calc(100% - 50px);
   }
 
 
+  /* =========================
+     HEADER
+  ========================= */
+
   .header {
-    width: calc(100% - 50px);
-
-    margin-left: 50px;
-
-    height: 52px;
+    min-height: 52px;
 
     padding: 0 6px;
   }
 
-
   .global-search {
     height: 32px;
-  }
-
-  .global-search input {
-    font-size: 10px;
   }
 
   .notification-button {
